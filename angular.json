@@ -1,0 +1,10 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "api": "apps/api",
+    "api-interfaces": "libs/api-interfaces",
+    "todo-websocket": "apps/todo-websocket",
+    "todo-websocket-e2e": "apps/todo-websocket-e2e"
+  }
+}
