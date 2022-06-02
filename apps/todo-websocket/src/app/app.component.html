@@ -3,18 +3,21 @@
     <div class="grid grid-cols-3 gap-5 w-3/4 h-3/4">
       <div class="h-screen flex flex-col">
         <div class="h-1/10">todo</div>
-        <ul class="h-9/10 rounded-md bg-slate-400 overflow-auto">
-          <li class="w-9/10 h-20 rounded-md bg-orange-50 m-4">aaaaaaa</li>
-          <li class="w-9/10 h-20 rounded-md bg-orange-50 m-4">aaaaaaa</li>
-          <li class="w-9/10 h-20 rounded-md bg-orange-50 m-4">aaaaaaa</li>
-          <li class="w-9/10 h-20 rounded-md bg-orange-50 m-4">aaaaaaa</li>
-          <li class="w-9/10 h-20 rounded-md bg-orange-50 m-4">aaaaaaa</li>
-          <li class="w-9/10 h-20 rounded-md bg-orange-50 m-4">aaaaaaa</li>
-          <li class="w-9/10 h-20 rounded-md bg-orange-50 m-4">aaaaaaa</li>
-          <li class="w-9/10 h-20 rounded-md bg-orange-50 m-4">aaaaaaa</li>
-          <li class="w-9/10 h-20 rounded-md bg-orange-50 m-4">aaaaaaa</li>
-          <li class="w-9/10 h-20 rounded-md bg-orange-50 m-4">bbb</li>
-          <li class="w-9/10 h-20 rounded-md bg-orange-50 m-4">aaaaaaa</li>
+        <ul
+          cdkDropList
+          #todoList="cdkDropList"
+          [cdkDropListData]="todo"
+          [cdkDropListConnectedTo]="doneList"
+          (cdkDropListDropped)="drop($event)"
+          class="h-9/10 rounded-md bg-slate-400 overflow-auto"
+        >
+          <li
+            class="w-9/10 h-20 rounded-md bg-orange-50 m-4"
+            *ngFor="let item of todo"
+            cdkDrag
+          >
+            {{ item }}
+          </li>
         </ul>
       </div>
 
@@ -37,18 +40,22 @@
 
       <div class="h-screen flex flex-col">
         <div class="h-1/10">done</div>
-        <ul class="h-9/10 rounded-md bg-slate-400 overflow-auto">
-          <li class="w-9/10 h-20 rounded-md bg-orange-50 m-4">aaaaaaa</li>
-          <li class="w-9/10 h-20 rounded-md bg-orange-50 m-4">aaaaaaa</li>
-          <li class="w-9/10 h-20 rounded-md bg-orange-50 m-4">aaaaaaa</li>
-          <li class="w-9/10 h-20 rounded-md bg-orange-50 m-4">aaaaaaa</li>
-          <li class="w-9/10 h-20 rounded-md bg-orange-50 m-4">aaaaaaa</li>
-          <li class="w-9/10 h-20 rounded-md bg-orange-50 m-4">aaaaaaa</li>
-          <li class="w-9/10 h-20 rounded-md bg-orange-50 m-4">aaaaaaa</li>
-          <li class="w-9/10 h-20 rounded-md bg-orange-50 m-4">aaaaaaa</li>
-          <li class="w-9/10 h-20 rounded-md bg-orange-50 m-4">aaaaaaa</li>
-          <li class="w-9/10 h-20 rounded-md bg-orange-50 m-4">bbb</li>
-          <li class="w-9/10 h-20 rounded-md bg-orange-50 m-4">aaaaaaa</li>
+        <ul
+          class="h-9/10 rounded-md bg-slate-400 overflow-auto"
+          cdkDropList
+          #doneList="cdkDropList"
+          [cdkDropListData]="done"
+          [cdkDropListConnectedTo]="[todoList]"
+          class="todo-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <li
+            class="w-9/10 h-20 rounded-md bg-orange-50 m-4"
+            *ngFor="let item of done"
+            cdkDrag
+          >
+            {{ item }}
+          </li>
         </ul>
       </div>
     </div>
