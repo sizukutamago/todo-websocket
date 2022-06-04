@@ -3,10 +3,18 @@
 @tailwind utilities;
 
 /* You can add global styles to this file, and also import other style files */
+.hv-05 {
+  height: 5vh;
+}
+
+.hv-95 {
+  height: 95vh;
+}
+
 .hv-1 {
   height: 10vh;
 }
 
 .hv-9 {
-  height: 90vh;
+  height: 80vh;
 }
