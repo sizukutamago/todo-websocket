@@ -37,18 +37,21 @@
       <div class="hv-1 bg-white flex justify-center items-center">
         <span>TODO</span>
       </div>
-      <ul class="hv-9 max-h-full overflow-scroll scroll-auto mt-5">
-        <li class="h-28 bg-gray-500 m-3 p-4 break-words overflow-scroll">
-          aaaaldakjsfklsdajklfjsdklajfklsdajlkfjsdalkfjkl;sdajklfjsdalkfklsdajklfjsdakljfdsajfkljsedaklfjklsdjfklsdjklfjsdakljfklsdajklfjsdalkfjklsdajfklsdjaklfjsdklajfklajkldjkl
+      <ul
+        class="hv-9 max-h-full overflow-scroll scroll-auto mt-5"
+        cdkDropList
+        #todoList="cdkDropList"
+        [cdkDropListData]="todo"
+        [cdkDropListConnectedTo]="[inProgressList, doneList]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <li
+          class="h-28 bg-gray-50 rounded-lg shadow-md m-3 p-4 first:mt-0 break-words overflow-scroll list-none"
+          *ngFor="let item of todo"
+          cdkDrag
+        >
+          {{ item }}
         </li>
-        <li class="h-28 bg-gray-500 block m-3 p-4">aaaa</li>
-        <li class="h-28 bg-gray-500 block m-3 p-4">aaaa</li>
-        <li class="h-28 bg-gray-500 block m-3 p-4">aaaa</li>
-        <li class="h-28 bg-gray-500 block m-3 p-4">aaaa</li>
-        <li class="h-28 bg-gray-500 block m-3 p-4">aaaa</li>
-        <li class="h-28 bg-gray-500 block m-3 p-4">aaaa</li>
-        <li class="h-28 bg-gray-500 block m-3 p-4">aaaa</li>
-        <li class="h-28 bg-gray-500 block m-3 p-4">aaaa</li>
       </ul>
     </div>
 
@@ -56,18 +59,21 @@
       <div class="hv-1 bg-white flex justify-center items-center">
         <span>IN PROGRESS</span>
       </div>
-      <ul class="hv-9 max-h-full overflow-scroll scroll-auto mt-5">
-        <li class="h-28 bg-gray-500 m-3 p-4 break-words overflow-scroll">
-          aaaaldakjsfklsdajklfjsdklajfklsdajlkfjsdalkfjkl;sdajklfjsdalkfklsdajklfjsdakljfdsajfkljsedaklfjklsdjfklsdjklfjsdakljfklsdajklfjsdalkfjklsdajfklsdjaklfjsdklajfklajkldjkl
+      <ul
+        class="hv-9 max-h-full overflow-scroll scroll-auto mt-5"
+        cdkDropList
+        #inProgressList="cdkDropList"
+        [cdkDropListData]="inProgress"
+        [cdkDropListConnectedTo]="[todoList, doneList]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <li
+          class="h-28 bg-gray-50 rounded-lg shadow-md m-3 p-4 first:mt-0 break-words overflow-scroll list-none"
+          *ngFor="let item of inProgress"
+          cdkDrag
+        >
+          {{ item }}
         </li>
-        <li class="h-28 bg-gray-500 block m-3 p-4">aaaa</li>
-        <li class="h-28 bg-gray-500 block m-3 p-4">aaaa</li>
-        <li class="h-28 bg-gray-500 block m-3 p-4">aaaa</li>
-        <li class="h-28 bg-gray-500 block m-3 p-4">aaaa</li>
-        <li class="h-28 bg-gray-500 block m-3 p-4">aaaa</li>
-        <li class="h-28 bg-gray-500 block m-3 p-4">aaaa</li>
-        <li class="h-28 bg-gray-500 block m-3 p-4">aaaa</li>
-        <li class="h-28 bg-gray-500 block m-3 p-4">aaaa</li>
       </ul>
     </div>
 
@@ -75,18 +81,21 @@
       <div class="hv-1 bg-white flex justify-center items-center">
         <span>DONE</span>
       </div>
-      <ul class="hv-9 max-h-full overflow-scroll scroll-auto mt-5">
-        <li class="h-28 bg-gray-500 m-3 p-4 break-words overflow-scroll">
-          aaaaldakjsfklsdajklfjsdklajfklsdajlkfjsdalkfjkl;sdajklfjsdalkfklsdajklfjsdakljfdsajfkljsedaklfjklsdjfklsdjklfjsdakljfklsdajklfjsdalkfjklsdajfklsdjaklfjsdklajfklajkldjkl
+      <ul
+        class="hv-9 max-h-full overflow-scroll scroll-auto mt-5"
+        cdkDropList
+        #doneList="cdkDropList"
+        [cdkDropListData]="done"
+        [cdkDropListConnectedTo]="[todoList, inProgressList]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <li
+          class="h-28 bg-gray-50 rounded-lg shadow-md m-3 p-4 first:mt-0 break-words overflow-scroll list-none"
+          *ngFor="let item of done"
+          cdkDrag
+        >
+          {{ item }}
         </li>
-        <li class="h-28 bg-gray-500 block m-3 p-4">aaaa</li>
-        <li class="h-28 bg-gray-500 block m-3 p-4">aaaa</li>
-        <li class="h-28 bg-gray-500 block m-3 p-4">aaaa</li>
-        <li class="h-28 bg-gray-500 block m-3 p-4">aaaa</li>
-        <li class="h-28 bg-gray-500 block m-3 p-4">aaaa</li>
-        <li class="h-28 bg-gray-500 block m-3 p-4">aaaa</li>
-        <li class="h-28 bg-gray-500 block m-3 p-4">aaaa</li>
-        <li class="h-28 bg-gray-500 block m-3 p-4">aaaa</li>
       </ul>
     </div>
   </div>

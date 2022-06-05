@@ -12,13 +12,32 @@ import {
 })
 export class AppComponent {
   todo = [
-    'おせちを食べる',
-    'お雑煮を食べる',
-    'おしるこを食べる',
-    'お年玉をあげる',
+    'test',
+    'test2',
+    'test2',
+    'test2',
+    'test2',
+    'test2',
+    'test2',
+    'test2',
+    'test2',
+    'test2',
   ];
 
-  done = ['年越しそばを食べる', 'カウントダウンをする'];
+  inProgress = [
+    'test',
+    'test2',
+    'test2',
+    'test2',
+    'test2',
+    'test2',
+    'test2',
+    'test2',
+    'test2',
+    'test2',
+  ];
+
+  done = ['test4', 'test5'];
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
