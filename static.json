@@ -1,0 +1,6 @@
+{
+  "root": "dist/apps/todo-websocket/",
+  "routes": {
+    "/**/*.html": "index.html"
+  }
+}
