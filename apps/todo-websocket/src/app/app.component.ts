@@ -11,33 +11,13 @@ import {
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  todo = [
-    'test',
-    'test2',
-    'test2',
-    'test2',
-    'test2',
-    'test2',
-    'test2',
-    'test2',
-    'test2',
-    'test2',
-  ];
+  todo = ['test'];
 
-  inProgress = [
-    'test',
-    'test2',
-    'test2',
-    'test2',
-    'test2',
-    'test2',
-    'test2',
-    'test2',
-    'test2',
-    'test2',
-  ];
+  inProgress = ['test'];
 
   done = ['test4', 'test5'];
+
+  todoTextarea = '';
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -54,5 +34,12 @@ export class AppComponent {
         event.currentIndex
       );
     }
+  }
+
+  onEnter() {
+    if (this.todoTextarea.trim()) {
+      this.todo.push(this.todoTextarea);
+    }
+    this.todoTextarea = '';
   }
 }
