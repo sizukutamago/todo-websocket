@@ -4,8 +4,8 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import io, { Socket } from 'socket.io-client';
-
+import io from 'socket.io-client';
+import { environment } from '../environments/environment';
 @Component({
   selector: 'todo-websocket-root',
   templateUrl: './app.component.html',
@@ -49,7 +49,7 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.socket = io('http://localhost:3333');
+    this.socket = io(environment.websocketUrl);
 
     this.socket.on('connect', () => {
       console.log(`connected to: ${this.socket.id}`);
