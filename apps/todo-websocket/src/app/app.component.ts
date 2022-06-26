@@ -4,8 +4,7 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import io from 'socket.io-client';
-import { environment } from '../environments/environment';
+import {MessageService} from "./services/message.service";
 @Component({
   selector: 'todo-websocket-root',
   templateUrl: './app.component.html',
@@ -20,7 +19,7 @@ export class AppComponent {
 
   todoTextarea = '';
 
-  socket: any = {};
+  constructor(private messageService: MessageService) {}
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -43,23 +42,15 @@ export class AppComponent {
     const todo = this.todoTextarea.trim();
     if (todo) {
       this.todo.push(todo);
-      this.socket.emit('message', { message: todo });
+      this.messageService.send(todo);
     }
     this.todoTextarea = '';
   }
 
   ngOnInit() {
-    this.socket = io(environment.websocketUrl);
-
-    this.socket.on('connect', () => {
-      console.log(`connected to: ${this.socket.id}`);
-    });
-
-    this.socket.on('xxx', (message: any) => {
+    this.messageService.message.subscribe((message: any) => {
+      this.todo.push(message.message);
       console.log(message);
-      if (message.socketId !== this.socket.id) {
-        this.todo.push(message.message);
-      }
     });
   }
 }
